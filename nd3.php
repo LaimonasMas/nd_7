@@ -8,23 +8,30 @@
     <style>
         body {
             background-color: white;
-            background-color: #<?php echo $_GET['color']; ?>
-        }
-        a {
-            color: white;
-        }
+            background-color: #<?php if (isset($_GET['color'])) {
+                                    echo $_GET['color'];
+                                } else {
+                                    echo 'black';
+                                } ?>;
+                                
+                                
+            a {
+                color: white;
+            }
     </style>
 </head>
+
 <body>
-<form action="" method="get">
-Įrašykite spalvos kodą:
-<input type="text" name="color" value="">
-<input type="submit" value="Išsiųsti">
-</form>
-<?php
+    <form action="" method="get">
+        Įrašykite spalvos kodą:
+        <input type="text" name="color" value="">
+        <input type="submit" value="Išsiųsti">
+    </form>
+    <?php
 
 
-?>
+    ?>
 
 </body>
+
 </html>

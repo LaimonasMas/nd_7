@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['redirect']) && $_GET['redirect'] == 'red') {
+    header('Location: http://localhost/nd/nd_7/nd5/red.php/');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,21 +16,15 @@
         body {
             background-color: blue;
         }
+
         a {
             color: white;
         }
-        <?php
-        if ($_GET['redirect'] == 'red') {
-            header('Location: http://localhost/nd/nd_7/red.php/');
-            exit;
-        }
-        ?>
     </style>
 </head>
 
 <body>
-    <a href="?redirect=red">http://localhost/nd/nd_7/blue.php/</a>
-
+    <a href="?redirect=red">Paspausk, kad nukreiptų į raudoną</a>
 </body>
 
 </html>

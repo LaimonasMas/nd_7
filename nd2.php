@@ -1,3 +1,11 @@
+<?php
+if (isset($_GET['color'])) {
+    $color = $_GET['color']; 
+}
+else {
+    $color = 'black';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +16,7 @@
     <style>
         body {
             background-color: black;
-            background-color: #<?php echo $_GET['color']; ?>
+            background-color: #<?= $color ?>
         }
         a {
             color: white;
@@ -16,10 +24,6 @@
     </style>
 </head>
 <body>
-
-<?php
-echo "<div><a href='?color='>http://localhost/nd/nd_7/nd2.php</a></div>";
-?>
-
+<a href='?color='>Paspausk CIA ir URL juostoj ivesk spalvos koda</a>
 </body>
 </html>

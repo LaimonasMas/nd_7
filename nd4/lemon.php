@@ -1,6 +1,9 @@
+<?php
+header('Location: http://localhost/nd/nd_7/nd4/orange.php');
+exit;
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +11,13 @@
     <title>Document</title>
     <style>
         body {
-            background-color: red;
+            background-color: lemonchiffon;
         }
-
-        <?php
-        if ($_GET['redirect'] == 'blue') {
-            header('Location: http://localhost/nd/nd_7/blue.php/');
-            exit;
-        }
-        ?>
     </style>
 </head>
 
 <body>
-    <a href="?redirect=blue">http://localhost/nd/nd_7/red.php/</a>
-
+    <h1>Čia 'lemon.php' failas!!!</h1>
 </body>
 
 </html>

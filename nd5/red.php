@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['redirect']) && $_GET['redirect'] == 'blue') {
+    header('Location: http://localhost/nd/nd_7/nd5/blue.php/');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +14,14 @@
     <title>Document</title>
     <style>
         body {
-            background-color: lemonchiffon;
+            background-color: red;
         }
     </style>
 </head>
 
 <body>
-    <?php
-    header('Location: http://localhost/nd/nd_7/orange.php/');
-    exit;
-    ?>
-    <h1>Čia 'lemon.php' failas!!!</h1>
+    <a href="?redirect=blue">Paspausk, kad nukreiptų į mėlyną</a>
+
 </body>
 
 </html>
