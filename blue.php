@@ -10,7 +10,9 @@
         body {
             background-color: blue;
         }
-
+        a {
+            color: white;
+        }
         <?php
         if ($_GET['redirect'] == 'red') {
             header('Location: http://localhost/nd/nd_7/red.php/');
@@ -21,7 +23,7 @@
 </head>
 
 <body>
-    <a href="?redirect=red" style="color: white">http://localhost/nd/nd_7/blue.php/</a>
+    <a href="?redirect=red">http://localhost/nd/nd_7/blue.php/</a>
 
 </body>
 
