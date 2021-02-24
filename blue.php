@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,19 @@
         body {
             background-color: blue;
         }
+
+        <?php
+        if ($_GET['redirect'] == 'red') {
+            header('Location: http://localhost/nd/nd_7/red.php/');
+            exit;
+        }
+        ?>
     </style>
 </head>
 
 <body>
     <a href="?redirect=red" style="color: white">http://localhost/nd/nd_7/blue.php/</a>
-    <?php
 
-if ($_GET['redirect'] == 'red') {
-    header('Location: http://localhost/nd/nd_7/red.php/');
-    exit;
-} 
-?>
 </body>
 
 </html>
