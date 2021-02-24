@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-header('Location: http://localhost/nd/nd_7/orange.php/');
-exit;
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,8 +14,11 @@ exit;
 </head>
 
 <body>
+    <?php
+    header('Location: http://localhost/nd/nd_7/orange.php/');
+    exit;
+    ?>
     <h1>Čia 'lemon.php' failas!!!</h1>
-
 </body>
 
 </html>
