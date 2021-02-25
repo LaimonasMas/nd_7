@@ -57,7 +57,6 @@
         echo "<p style='color: red'></p>";
         echo '<br>';
     }
-
     echo '<br>';
     echo $formTagEnd;
     echo '</div>';
@@ -69,8 +68,6 @@
         echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $countAll.</p>";
         echo '</div>';
     }
-
-
     ?>
 
 </body>

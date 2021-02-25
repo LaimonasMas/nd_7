@@ -1,3 +1,17 @@
+<?php
+
+_d($_GET);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $b = '#FFE97F;';
+} else {
+    $b = 'green';
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,21 +31,16 @@
 
 <body style="background-color: <?php
 
-                                if (isset($_POST['post'])) {
-                                    echo 'yellow';
-                                }
-                                if (isset($_GET['get'])) {
-                                    echo 'green';
-                                }
+                                echo $b;
 
                                 ?>">
 
     <form action="" method="get">
-        <button type="submit" name="get">GET METODAS</button>
+        <button type="submit" name="getas" value="125">GET METODAS</button>
     </form>
 
     <form action="" method="post" value="">
-        <button type="submit" name="post">POST METODAS</button>
+        <button type="submit">POST METODAS</button>
 
     </form>
 
