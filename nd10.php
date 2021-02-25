@@ -73,7 +73,6 @@ if (isset($_POST['post'])) {
     if (isset($_POST['checkbox'])) {
         $checked_arr = $_POST['checkbox'];
         $countChecked = count($checked_arr);
-        // CountAll blogai skaiciuoja, prideda ir naujos iteracijos checkboxus
         echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $rez.</p>";
         
     }
