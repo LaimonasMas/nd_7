@@ -1,22 +1,25 @@
 <?php
 session_start();
 
-if (isset($_GET['name1']) && isset($_GET['name1']) && isset($_GET['start'])) {
-    $firstPlayer = $_GET['name1'];
-    $secondPlayer = $_GET['name2'];
+if (isset($_GET['name1']) && isset($_GET['name2']) && isset($_GET['start'])) {
+    $_SESSION['nameFirst'] = $_GET['name1'];
+    $_SESSION['nameSecond'] = $_GET['name2'];
 }
 
 if (isset($_GET['next'])) {
+    
     if (!isset($_SESSION['countFirst'])) {
         $_SESSION['countFirst'] = 0;
         $_SESSION['First'] = 1;
     }
+    if ($_SESSION['First'] % 2 != 0) {
         $_SESSION['countFirst'] += rand(1, 6);
-        $_SESSION['First']++;
-        _d($_SESSION['countFirst']);    
+    }
+    $_SESSION['First']++;
+    _d($_SESSION['countFirst']);
     _d('dabar meta pirmas');
-    _d($_GET);
-} 
+    _d($_SESSION['First']);
+}
 if (isset($_GET['next']) && $_SESSION['countFirst'] >= 30) {
     $_SESSION['countFirst'] = 0;
     $_SESSION['countSecond'] = 0;
@@ -25,26 +28,39 @@ if (isset($_GET['next']) && $_SESSION['countFirst'] >= 30) {
 
 if (isset($_GET['next'])) {
     if (!isset($_SESSION['countSecond'])) {
-        $_SESSION['countSecond'] = 0;
-        $_SESSION['Second'] = 2;
+        $_SESSION['countSecond'] = 2;
+        $_SESSION['Second'] = 4;
     }
+    if ($_SESSION['Second'] % 2 != 0) {
         $_SESSION['countSecond'] += rand(1, 6);
-        $_SESSION['Second']++;
-        _d($_SESSION['countSecond']);    
+    }
+    $_SESSION['Second']++;
+    _d($_SESSION['countSecond']);
     _d('dabar meta antras');
-    _d($_GET);
-} 
+    _d($_SESSION['Second']);
+}
 if (isset($_GET['next']) && $_SESSION['countSecond'] >= 30) {
     $_SESSION['countFirst'] = 0;
     $_SESSION['countSecond'] = 0;
+    unset($_SESSION['First']);
+    unset($_SESSION['Second']);
     header('Location: http://localhost/nd/nd_7/nd11.php');
 }
 
-function show($first) {
+function show($first)
+{
     if ($first % 2 != 0) {
-        return print_r($_SESSION['countFirst']);
+        return $_SESSION['countFirst'];
     } else {
-        return print_r($_SESSION['countSecond']);
+        return $_SESSION['countSecond'];
+    }
+}
+function show2($first)
+{
+    if ($first % 2 != 0) {
+        return $_SESSION['countSecond'];
+    } else {
+        return $_SESSION['countFirst'];
     }
 }
 
@@ -76,11 +92,11 @@ function show($first) {
         </div>
         <form action="http://localhost/nd/nd_7/nd11.php" method="get">
             <div>
-                <p>Pirmas žaidėjas: <?php (isset($firstPlayer)) ? print_r($firstPlayer)  : ''; ?></p>
+                <p>Pirmas žaidėjas: <?php (isset($_SESSION['nameFirst'])) ? print_r($_SESSION['nameFirst'])  : ''; ?></p>
                 <input type="text" name="name1" id="">
             </div>
             <div>
-                <p>Antras žaidėjas: <?php (isset($secondPlayer)) ? print_r($secondPlayer) : ''; ?></p>
+                <p>Antras žaidėjas: <?php (isset($_SESSION['nameSecond'])) ? print_r($_SESSION['nameSecond']) : ''; ?></p>
                 <input type="text" name="name2" id="">
             </div>
             <br>
@@ -92,16 +108,16 @@ function show($first) {
     <section class="rightColumn">
         <div>
             <h2>Rezultatas: </h2>
-            <h2><?php (isset($_GET['name1'])) ? print_r($_GET['name1']) : print_r('') ?> taškai: <?php (isset($_GET['next'])) ? print_r($_GET['next']) : print_r(''); ?></h2>
-            <h2><?php (isset($_GET['name2'])) ? print_r($_GET['name2']) : print_r('') ?> taškai: <?php (isset($_GET['next'])) ? print_r($_GET['next']) : print_r(''); ?></h2>
+            <h2><?php (isset($_SESSION['nameFirst'])) ? print_r($_SESSION['nameFirst']) : print_r('') ?> surinko: <?php (isset($_GET['next'])) ? print_r($_SESSION['countFirst']) : print_r(''); ?></h2>
+            <h2><?php (isset($_SESSION['nameSecond'])) ? print_r($_SESSION['nameSecond']) : print_r('') ?> surinko: <?php (isset($_GET['next'])) ? print_r($_SESSION['countSecond']) : print_r(''); ?></h2>
             <h3>Dabar meta kauliuką: </h3>
             <form action="http://localhost/nd/nd_7/nd11.php" method="get">
-                <button type="submit" name="next" value="<?php if (isset($_SESSION['countFirst']) && isset($_SESSION['countSecond'])) {
-                    show($_SESSION['First']);
-                } else {
-                    echo '';
-                }
-                ?>">Mesti kauliuką ! ! !</button>
+                <button type="submit" name="next" value="<?php if (isset($_SESSION['countFirst']) && isset($_SESSION['countSecond']) && isset($_SESSION['First'])) {
+                                                                print_r(show($_SESSION['First']));
+                                                            } else {
+                                                                echo '';
+                                                            }
+                                                            ?>">Mesti kauliuką ! ! !</button>
             </form>
         </div>
     </section>
