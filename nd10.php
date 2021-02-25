@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,21 +16,23 @@
 
                                 ?>;
         }
+
         .forma {
             display: <?php if (!isset($_POST['post'])) {
-                echo 'inline-block';
-                        } else if (isset($_POST['post'])) {                            
-                            echo 'none';                          
+                            echo 'inline-block';
+                        } else if (isset($_POST['post'])) {
+                            echo 'none';
                         }
                         ?>
         }
+
         .show {
             display: inline-block;
         }
     </style>
 </head>
 
-<body >
+<body>
 
     <?php
     $formTagStart = '<form action="" method="post">';
@@ -40,27 +43,33 @@
     $randChecboxNumb = rand(3, 10);
     $checkbox = '<input type="checkbox" name="checkbox[]" id="a" value="1">';
     $button = '<button type="submit" name="post">SUBMIT</button>';
-    $countAll = 0;
+
     echo '<div class="forma">';
     echo $formTagStart;
     echo '<br>';
     echo $button;
     echo '<br>';
+    $countAll = 0;
     foreach (range('A', chr(rand(67, 74))) as $key => $value) {
         echo "<label style=\"color: red\" for=\"a\">$value</label>" . ' ' . $checkbox;
         echo '<br>';
         $countAll++;
-        echo "<p style='color: red'>$countAll</p>";
-        echo '<br>'; 
+        echo "<p style='color: red'></p>";
+        echo '<br>';
     }
+
     echo '<br>';
     echo $formTagEnd;
     echo '</div>';
     echo '<div class="show">';
-    $checked_arr = $_POST['checkbox'];
-    $countChecked = count($checked_arr);
-    echo "There are $countChecked checkboxe(s) checked out of $countAll.";
-    echo '</div>';
+    if (isset($_POST['checkbox'])) {
+        $checked_arr = $_POST['checkbox'];
+        $countChecked = count($checked_arr);
+        // CountAll blogai skaiciuoja, prideda ir naujos iteracijos checkboxus
+        echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $countAll.</p>";
+        echo '</div>';
+    }
+
 
     ?>
 
