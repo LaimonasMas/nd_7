@@ -1,10 +1,9 @@
 <?php
 
-if (isset($_POST['post'])) {
-    header('Location: http://localhost/nd/nd_7/nd8/rose.php?noredirecting=1');
+if (isset($_POST['postas']) && $_POST['postas'] == '5') {
+    header('Location: http://localhost/nd/nd_7/nd8/rose.php');
 die;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +17,8 @@ die;
 </head>
 
 <body style="background-color: pink">
-    <form action="" method="post" value="">
-        <button type="submit" name="post">GO TO ROSE</button>
+    <form action="http://localhost/nd/nd_7/nd8/rose.php" method="post" >
+        <button type="submit">GO TO ROSE</button>
     </form>
 </body>
 

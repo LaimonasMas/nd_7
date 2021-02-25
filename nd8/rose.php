@@ -1,11 +1,9 @@
 <?php
 
-if (isset($_GET['noredirecting'])) {
-_d('nieko nedarom');
-} else if (isset($_GET)) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header('Location: http://localhost/nd/nd_7/nd8/pink.php');
+   die;
 }
-
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,36 +13,31 @@
                                 } else if (isset($_POST['post'])) {
                                     echo 'white';
                                 }
-
                                 ?>;
         }
+
         .forma {
             display: <?php if (!isset($_POST['post'])) {
-                echo 'inline-block';
+                            echo 'inline-block';
                         } else if (isset($_POST['post'])) {
                             echo 'none';
                         }
-
                         ?>
         }
+
         .show {
             display: inline-block;
         }
     </style>
 </head>
 
-<body >
-
+<body>
     <?php
     $formTagStart = '<form action="" method="post">';
     $formTagEnd = '</form>';
-    ?>
-
-    <?php
     $randChecboxNumb = rand(3, 10);
     $checkbox = '<input type="checkbox" name="checkbox[]" id="a" value="1">';
     $button = '<button type="submit" name="post">SUBMIT</button>';
-
     echo '<div class="forma">';
     echo $formTagStart;
     echo '<br>';
@@ -55,13 +51,14 @@
     echo $formTagEnd;
     echo '</div>';
     echo '<div class="show">';
-    $checked_arr = $_POST['checkbox'];
-    $count = count($checked_arr);
-    echo "There are ".$count." checkboxe(s) checked";
+    if (isset($_POST['checkbox'])) {
+        $checked_arr = $_POST['checkbox'];
+        $countChecked = count($checked_arr);
+        // CountAll blogai skaiciuoja, prideda ir naujos iteracijos checkboxus
+        echo "<p style='color: red'>There are $countChecked checkboxe(s).</p>";
+    }
     echo '</div>';
-
     ?>
-
 </body>
 
 </html>

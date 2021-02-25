@@ -1,6 +1,6 @@
 <?php
 
-_d($_GET);
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $b = '#FFE97F;';
@@ -29,14 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </head>
 
-<body style="background-color: <?php
-
-                                echo $b;
-
-                                ?>">
+<body style="background-color: <?= $b ?>">
 
     <form action="" method="get">
-        <button type="submit" name="getas" value="125">GET METODAS</button>
+        <button type="submit">GET METODAS</button>
     </form>
 
     <form action="" method="post" value="">

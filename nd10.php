@@ -1,3 +1,16 @@
+<?php
+
+
+
+        _d($_SERVER['REQUEST_METHOD']);
+        _d($_POST);
+    
+    
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +22,10 @@
     <style>
         body {
             background-color: <?php if (!isset($_POST['post'])) {
-                                    echo 'black';
+                                    echo 'white';
                                 } else if (isset($_POST['post'])) {
                                     echo 'white';
                                 }
-
                                 ?>;
         }
 
@@ -21,7 +33,7 @@
             display: <?php if (!isset($_POST['post'])) {
                             echo 'inline-block';
                         } else if (isset($_POST['post'])) {
-                            echo 'none';
+                            echo 'inline-block';
                         }
                         ?>
         }
@@ -35,39 +47,38 @@
 <body>
 
     <?php
-    $formTagStart = '<form action="" method="post">';
-    $formTagEnd = '</form>';
-    ?>
-
-    <?php
     $randChecboxNumb = rand(3, 10);
-    $checkbox = '<input type="checkbox" name="checkbox[]" id="a" value="1">';
-    $button = '<button type="submit" name="post">SUBMIT</button>';
-
+    $countAll = 0; 
     echo '<div class="forma">';
-    echo $formTagStart;
+    echo '<form action="http://localhost/nd/nd_7/nd10.php" method="post">';
     echo '<br>';
-    echo $button;
     echo '<br>';
-    $countAll = 0;
+    
     foreach (range('A', chr(rand(67, 74))) as $key => $value) {
-        echo "<label style=\"color: red\" for=\"a\">$value</label>" . ' ' . $checkbox;
-        echo '<br>';
         $countAll++;
+        echo "<label style='color: red' for='a'>$value</label>" . ' ' . "<input type='checkbox' name='checkbox[]' id='a' value='1'>";
+        echo '<br>';        
         echo "<p style='color: red'></p>";
         echo '<br>';
     }
+    echo '<button type="submit" name="post" value='.$countAll.'>SUBMIT</button>';
     echo '<br>';
-    echo $formTagEnd;
+    echo '</form>';
     echo '</div>';
     echo '<div class="show">';
+    echo '<br>';
+if (isset($_POST['post'])) {
+    $rez = $_POST['post'];
+}
     if (isset($_POST['checkbox'])) {
         $checked_arr = $_POST['checkbox'];
         $countChecked = count($checked_arr);
         // CountAll blogai skaiciuoja, prideda ir naujos iteracijos checkboxus
-        echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $countAll.</p>";
-        echo '</div>';
+        echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $rez.</p>";
+        
     }
+  
+    echo '</div>';
     ?>
 
 </body>
