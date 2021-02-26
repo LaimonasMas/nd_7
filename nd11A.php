@@ -11,11 +11,8 @@ if (isset($_GET['name1']) && isset($_GET['name2']) && isset($_GET['start'])) {
 if (!isset($_SESSION['mainCount'])) {
     $_SESSION['mainCount'] = 0;
 }
-
 if (isset($_SESSION['mainCount']) && isset($_GET['next'])) {
-    _d($_SESSION['mainCount']);
     $_SESSION['mainCount']++;
-    _d($_SESSION['mainCount']);
 }
 
 // atvaizdavimo funkcija
@@ -30,23 +27,23 @@ function show($number)
     }
 }
 
+// pirminis skaitikliu nuresetinimas jei norim iseiti per viduri zaidimo paspaudziant mygtuka "pradeti"
 if (empty($_GET['name1']) && empty($_GET['name2']) && empty($_SESSION['nameFirst']) && empty($_SESSION['nameSecond'])) {
     $_SESSION['mainCount'] = 0;
     $_SESSION['countFirst'] = 0;
     $_SESSION['countSecond'] = 0;
 }
 
-// kauliuku meta pirmas zaidejas
+// kauliuka meta pirmas zaidejas
 if (!isset($_SESSION['countFirst'])) {
     $_SESSION['countFirst'] = 0;
 }
 if (isset($_SESSION['mainCount']) && (show($_SESSION['mainCount']) == 2)) {
-    _d($_SESSION['mainCount']);
     $number1 = rand(1, 6);
     $_SESSION['countFirst'] += $number1;
 }
 
-// kauliuku meta antras zaidejas
+// kauliuka meta antras zaidejas
 if (!isset($_SESSION['countSecond'])) {
     $_SESSION['countSecond'] = 0;
 }
@@ -55,7 +52,7 @@ if (isset($_SESSION['mainCount']) && (show($_SESSION['mainCount']) == 3)) {
     $_SESSION['countSecond'] += $number2;
 }
 
-// nugaletojo skaiciavimas 
+// nugaletojo skaiciavimo funkcija 
 function winner($countFirst, $countSecond)
 {
     if ($countFirst > $countSecond) {
@@ -66,7 +63,7 @@ function winner($countFirst, $countSecond)
     }
 }
 
-// bendras skaitikliu nuresetinimas
+// bendras skaitikliu nuresetinimas baigiant zaidima
 $winnerCounter = 0;
 if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION['countSecond'] >= 30)) {
     $_SESSION['countFirstAfter'] = $_SESSION['countFirst'];
@@ -120,12 +117,9 @@ if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION
     </section>
     <section class="rightColumn">
         <div>
-
             <?php
-
             if (isset($_SESSION['nameFirst']) && !empty($_SESSION['nameFirst']) && isset($_SESSION['nameSecond']) && !empty($_SESSION['nameSecond']) && ($_SESSION['countFirst'] > 0 || $_SESSION['countSecond'] > 0)) {
                 echo '<h2>Rezultatas: </h2>';
-
                 if (show($_SESSION['mainCount']) == 2 && isset($_SESSION['nameFirst']) && $_SESSION['mainCount'] != 0 && $winnerCounter != 1 && $_SESSION['countFirst'] > 0) {
                     print_r('<h4>' . $_SESSION['nameFirst'] . " išmetė " . $number1 . '</h4>');
                 }
@@ -176,7 +170,6 @@ if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION
             ?>
         </div>
     </section>
-
 </body>
 
 </html>
