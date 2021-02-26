@@ -59,10 +59,10 @@ if (isset($_SESSION['mainCount']) && (show($_SESSION['mainCount']) == 3)) {
 function winner($countFirst, $countSecond)
 {
     if ($countFirst > $countSecond) {
-        return '<h2>Nugalėjo ' . $_SESSION['nameFirst'] . '</h2>';
+        return '<h2>Nugalėjo ' . $_SESSION['nameFirst'] . ' surinkęs </h2>';
     }
     if ($countFirst < $countSecond) {
-        return '<h2>Nugalėjo ' . $_SESSION['nameSecond'] . '</h2>';
+        return '<h2>Nugalėjo ' . $_SESSION['nameSecond'] . ' surinkęs </h2>';
     }
 }
 
@@ -163,7 +163,7 @@ if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION
                     }
                 }
                 if ($winnerCounter == 1) {
-                    echo '<h2>' . winner($_SESSION['countFirstAfter'], $_SESSION['countSecondAfter']) . '</h2>' . '<h2> surinkęs </h2>' . '<h2>' . max($_SESSION['countFirstAfter'], $_SESSION['countSecondAfter']) . '</h2>';
+                    echo '<h2>' . winner($_SESSION['countFirstAfter'], $_SESSION['countSecondAfter']) . '</h2>' . '<h2>' . max($_SESSION['countFirstAfter'], $_SESSION['countSecondAfter']) . '</h2>';
                 }
                 ?>
             </h2>
