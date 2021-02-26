@@ -163,7 +163,7 @@ if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION
             </h2>
             <?php
             if (isset($_SESSION['nameFirst']) && !empty($_SESSION['nameFirst']) && isset($_SESSION['nameSecond']) && !empty($_SESSION['nameSecond']) && $winnerCounter != 1) {
-                echo '<form action="http://localhost/nd/nd_7/nd11A.php" method="get">';
+                echo '<form action="" method="get">';
                 echo '<button type="submit" name="next" value="1">Mesti kauliuką ! ! !</button>';
                 echo '</form>';
             }
