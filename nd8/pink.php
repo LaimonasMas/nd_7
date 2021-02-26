@@ -1,6 +1,6 @@
 <?php
-
-if (isset($_POST['postas']) && $_POST['postas'] == '5') {
+_d($_SERVER['REQUEST_METHOD']);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: http://localhost/nd/nd_7/nd8/rose.php');
 die;
 }

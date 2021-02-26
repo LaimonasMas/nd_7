@@ -1,5 +1,5 @@
 <?php
-
+    _d($_SERVER['REQUEST_METHOD']);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header('Location: http://localhost/nd/nd_7/nd8/pink.php');
    die;
