@@ -8,58 +8,52 @@
     <title>Document</title>
     <style>
         body {
-            background-color: <?php if (!isset($_POST['post'])) {
+            background-color: <?php if (!isset($_POST['button'])) {
                                     echo 'black';
-                                } else if (isset($_POST['post'])) {
+                                } else if (isset($_POST['button'])) {
                                     echo 'white';
                                 }
                                 ?>;
         }
 
-        .forma {
-            display: <?php if (!isset($_POST['post'])) {
+        form {
+            display: <?php if (!isset($_POST['button'])) {
                             echo 'inline-block';
-                        } else if (isset($_POST['post'])) {
+                        } else if (isset($_POST['button'])) {
                             echo 'none';
                         }
                         ?>
         }
 
-        .show {
-            display: inline-block;
+        h3 {
+            color: red;
         }
     </style>
 </head>
 
 <body>
-
-    <?php
-    $randChecboxNumb = rand(3, 10);
-    $countAll = 0;
-    echo '<div class="forma">';
-    echo '<form action="" method="post">';
-    foreach (range('A', chr(rand(67, 74))) as $key => $value) {
-        $countAll++;
-        echo "<label style='color: red' for='a'>$value</label>" . ' ' . "<input type='checkbox' name='checkbox[]' id='a' value='1'>";
-        echo '<br>';
-    }
-    echo '<button type="submit" name="post" value=' . $countAll . '>SUBMIT</button>';
-    echo '<br>';
-    echo '</form>';
-    echo '</div>';
-    echo '<div class="show">';
-    echo '<br>';
-    if (isset($_POST['post'])) {
-        $rez = $_POST['post'];
-    }
-    if (isset($_POST['checkbox'])) {
-        $checked_arr = $_POST['checkbox'];
-        $countChecked = count($checked_arr);
-        echo "<p style='color: red'>There are $countChecked checkboxe(s) checked out of $rez.</p>";
-    }
-    echo '</div>';
+    <form action="http://localhost/nd/nd_7/nd10.php" method="post">
+        <?php
+        foreach (range('A', chr(rand(67, 74))) as $key => $value) {                   
+            echo "<label style=\"color: red\" for=\"a\">$value</label>" . ' ' . '<input type="checkbox" name="checkbox[]" value="1" id="a">';
+            echo '<br>';            
+        } 
+        $countAll = $key+1;
+        echo '<button type="submit" name="button" value=' . $countAll . '>PASPAUSK</button>';
+        $number = $_POST['button'];
+        ?>
+    </form>
+    <h3>
+    <?php 
+    if (isset($_POST['button']) && !isset($_POST['checkbox'])) {
+        echo "There are none checkboxes checked out of $number.";
+    } else if (isset($_POST['checkbox']) && count($_POST['checkbox']) == 1) {
+        echo 'There is ' . count($_POST['checkbox']) . ' checkbox checked ' . "out of $number.";  
+    } else if (isset($_POST['checkbox'])) {
+        echo 'There are ' . count($_POST['checkbox']) . ' checkboxes checked ' . "out of $number."; 
+    }    
     ?>
-
+    </h3>
 </body>
 
 </html>
