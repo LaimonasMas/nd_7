@@ -1,14 +1,9 @@
 <?php
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $b = '#FFE97F;';
 } else {
     $b = 'green';
 }
-
-
 ?>
 
 

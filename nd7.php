@@ -4,10 +4,8 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $b = '#FFE97F;';
-    if (isset($_GET)) {
-        header('Location: http://localhost/nd/nd_7/nd7.php');
-        die;
-    }
+    header('Location: http://localhost/nd/nd_7/nd7.php');
+    die;
 } else {
     $b = 'green';
 }

@@ -72,7 +72,10 @@ if (isset($_SESSION['mainCount']) && ($_SESSION['countFirst'] >= 30 || $_SESSION
     $_SESSION['mainCount'] = 0;
     $_SESSION['countFirst'] = 0;
     $_SESSION['countSecond'] = 0;
+    session_destroy();
 }
+
+
 
 ?>
 <!DOCTYPE html>
